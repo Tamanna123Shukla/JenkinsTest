@@ -1,0 +1,13 @@
+<apex:page standardController="OpportunityLineItem" extensions="AddProductClass">
+    <apex:form >
+<apex:pageBlock title="add product">
+    <apex:pageBlockTable value="{!selectedProduct}" var="s">
+         <apex:column headerValue="Name"><apex:outputText value="{!s.name}" /></apex:column>
+        <apex:column headerValue="price"><apex:outputText value="{s.listprice}"></apex:outputText></apex:column>
+        <apex:column headerValue="discount"><apex:outputText value="{s.Discount}"></apex:outputText></apex:column>
+         <apex:column headerValue="Quantity"><apex:inputField value="{!s.Quantity}" /></apex:column>
+        
+    </apex:pageBlockTable>
+    </apex:pageBlock>
+        </apex:form>
+</apex:page>

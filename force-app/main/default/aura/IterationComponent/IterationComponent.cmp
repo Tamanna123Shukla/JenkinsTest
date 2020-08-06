@@ -1,0 +1,14 @@
+<aura:component >
+    <!--aura:attribute name="accounts" type="Account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:select aura:id="a_opt" name="a_opt" label="Accounts"  onchange="{!c.onSelectChange}">
+        <aura:iteration items="{!v.accounts}" var="account">
+            <option value="{!account.Id}">{!account.Name}</option>
+        </aura:iteration>
+    </lightning:select-->
+      <!--aura:handler name="init" value="{!this}" action="{!c.init}"/-->
+ <lightning:button label="New" variant="white" onclick="{!c.init}"/>    
+    <p>Dynamically created button</p>
+    {!v.body}
+    
+</aura:component>

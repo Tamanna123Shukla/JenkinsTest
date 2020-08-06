@@ -1,0 +1,20 @@
+<apex:page standardController="OpportunityLineItem" extensions="ProductClass">
+    <apex:form >
+        <apex:pageBlock title="Add product" id="product_list">
+            <apex:selectList title="product name" value="{!OpportunityLineItem.product2.Family}" size="1" required="true" >
+               <apex:selectOptions value="{!options}"></apex:selectOptions>
+                <apex:actionSupport event="onchange" reRender="page" />
+                 </apex:selectList>
+            <apex:pageBlockTable value="{!AllOpportunity}" id="page" var="obj">
+              <apex:column headerValue="opportunity Name"><apex:outputText value="{!obj.name}" /></apex:column>  
+               <apex:repeat > 
+                
+               <apex:column headerValue="opportunity Name"><apex:outputText value="{!obj.name}"/></apex:column>    
+                </apex:repeat>        
+               
+            
+            </apex:pageBlockTable>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

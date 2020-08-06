@@ -1,0 +1,49 @@
+<apex:page standardController="opportunity" extensions="AddProductClass" >
+    <apex:form >
+        
+
+        <apex:selectList title="product family" value="{!values}" size="1" required="true" >
+            <apex:selectOptions value="{!options}"></apex:selectOptions>
+            <apex:actionSupport event="onchange" reRender="product_list" />
+        </apex:selectList>
+        
+        <apex:inputText value="{!searchstring}" label="Input"/>
+        <apex:commandButton value="Search name " reRender="product_list"   status="ajaxId"></apex:commandButton>
+        &nbsp;<apex:actionStatus startText="Searching..." id="ajaxId"></apex:actionStatus>  
+        
+        <apex:inputText value="{!productcode}" label="Input"/>
+        <apex:commandButton value="Search product code"  reRender="product_list"  status="ajaxId1"  ></apex:commandButton>
+        &nbsp;<apex:actionStatus startText="Searching..." id="ajaxId1"></apex:actionStatus>  
+        
+        <apex:pageBlock title="Add product" id="product_list" >
+            <apex:pageBlockSection id="table1" rendered="{!showproduct}">
+                <apex:pageBlockTable value="{!AllProduct}" var="a"  > 
+                    <apex:column ><apex:inputCheckbox value="{!a.checkbox1}" /></apex:column>
+                    <apex:column headerValue="Name"><apex:outputText value="{!a.pro.name}" /></apex:column> 
+                    <apex:column headerValue="product code"><apex:outputText value="{!a.pro.ProductCode}" /></apex:column> 
+                    <apex:column headerValue="product status"><apex:outputText value="{!a.pro.IsActive}" /></apex:column> 
+                    <apex:column headerValue="product Family"><apex:outputText value="{!a.pro.Family}" /></apex:column>   
+                </apex:pageBlockTable>
+               
+            </apex:pageBlockSection>
+              <apex:pageBlockButtons location="top" >
+                <apex:commandButton value="select" action="{!customSelect}" reRender="product_list"/>
+                <apex:commandButton value="save" action="{!save}" reRender=""  />
+            </apex:pageBlockButtons>
+           
+           
+            <apex:pageBlockSection id="table2" rendered="{!(!showproduct)}" >
+               
+                <apex:pageBlockTable value="{!selectedProduct}" var="s" id="tab1">
+                   
+                    <apex:column headerValue="Name"><apex:outputField value="{!s.PricebookEntry.Product2Id}" /></apex:column>
+                    <apex:column headerValue="price"><apex:outputText value="{!s.UnitPrice}"></apex:outputText></apex:column>
+                    <apex:column headerValue="discount"><apex:outputText value="{!s.Discount}"></apex:outputText></apex:column>
+                    <apex:column headerValue="Quantity"><apex:inputField value="{!s.Quantity}" /></apex:column>
+                    
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+           
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
