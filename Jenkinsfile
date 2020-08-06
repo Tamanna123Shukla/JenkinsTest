@@ -2,7 +2,6 @@
 import groovy.json.JsonSlurperClassic
 node {
 
- 
     println env
     println env.getEnvironment()
     def BUILD_NUMBER=env.BUILD_NUMBER
