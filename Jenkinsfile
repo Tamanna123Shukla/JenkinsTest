@@ -46,12 +46,11 @@ node {
 
             println rc
             
-            // need to pull out assigned username
-            if (isUnix()) {
-                rmsg = sh returnStdout: true, script: "${toolbelt} force:source:deploy --manifest manifest/package.xml -u ${HUB_ORG}"
-            }else{
-               rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:source:deploy --manifest manifest/package.xml -u ${HUB_ORG}"
-            }
+           if (isUnix()) {
+rmsg = sh returnStdout: true, script: "${toolbelt} force:source:deploy --manifest manifest/package.xml -u ${HUB_ORG}"
+}else{
+rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:source:deploy --manifest manifest/package.xml -u ${HUB_ORG}"
+}
               
             printf rmsg
             println('Hello from a Job DSL script!')
